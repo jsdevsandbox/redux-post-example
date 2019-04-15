@@ -3,7 +3,7 @@ simple react redux app that gets and makes post calls to jsonplaceholder
 app was made by following the tutorial here: 
 https://www.youtube.com/watch?v=93p3LxR9xfM
 
-## Instal
+## Install
 `npm install`
 
 ## Run
