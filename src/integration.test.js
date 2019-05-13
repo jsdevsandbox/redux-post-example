@@ -51,3 +51,30 @@ describe("Integration Tests for Redux Store", () => {
     expect(store.getState()).toEqual(expectedResponse);
   });
 });
+
+// need to finish this test
+describe("redux integration tests using fetch-mock -- need to finish this", () => {
+  afterEach(() => {
+    fetchMock.restore();
+  });
+
+  let expectedResponse = {
+    posts: {
+      item: {},
+      items: { body: "this is the body of Post 1", id: "1", title: "Post 1" }
+    }
+  };
+
+  it("should return new state from the store", async () => {
+    fetchMock.mock(
+      "https://jsonplaceholder.typicode.com/posts",
+      200,
+      expectedResponse
+    );
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+    store.dispatch(fetchPosts());
+    const newState = store.getState();
+    expect(newState).toEqual(expectedResponse);
+  });
+});
